@@ -1,0 +1,12 @@
+@charset "ISO-8859-1";
+
+	.btn-outline-success {
+    color: white;
+    border-color: #822626;
+}
+    .btn-outline-success:hover {
+    color: #fff;
+    background-color: #822626;
+    border-color: #822626;
+}
+    
