@@ -1,6 +1,10 @@
 <!doctype html>
 <%@page import="it.prova.discomusicale.model.DiscoMusicale"%>
 <%@page import="java.text.SimpleDateFormat"%>
+
+<%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
+<%@ taglib uri = "http://java.sun.com/jsp/jstl/fmt" prefix = "fmt" %>
+
 <html lang="it" class="h-100" >
 	 <head>
 	 
@@ -43,32 +47,32 @@
 		
 							<form method="post" action="ExecuteUpdateServlet" class="row g-3" novalidate="novalidate">
 							
-								<% DiscoMusicale discoMusicaleInPagina = (DiscoMusicale)request.getAttribute("discoMusicaleDaAggiornare"); %>
 							
-								<input type="hidden" name = "id" value="<%=discoMusicaleInPagina.getId()%>">
+								<input type="hidden" name = "id" value="${discoMusicaleDaAggiornare.id}">
 							
 								<div class="col-md-6">
 									<label for="titolo" class="form-label">Titolo <span class="text-danger">*</span></label>
 									<input type="text" name="titolo" id="titolo" class="form-control" placeholder="Inserire il titolo"  
-										value="<%=discoMusicaleInPagina.getTitolo()!=null?discoMusicaleInPagina.getTitolo():"" %>" required>
+										value="${discoMusicaleDaAggiornare.titolo}" required>
 								</div>
 								
 								<div class="col-md-6">
 									<label for="autore" class="form-label">Autore <span class="text-danger">*</span></label>
 									<input type="text" name="autore" id="autore" class="form-control" placeholder="Inserire l'autore"  
-										value="<%=discoMusicaleInPagina.getAutore()!=null?discoMusicaleInPagina.getAutore():"" %>" required>
+										value="${discoMusicaleDaAggiornare.autore}" required>
 								</div>
 							
 								<div class="col-md-6">
 									<label for="numeroTracce" class="form-label">NumeroTracce <span class="text-danger">*</span></label>
 									<input type="number" class="form-control" name="numeroTracce" id="numeroTracce" placeholder="Inserire numeroTracce" 
-									value="<%=discoMusicaleInPagina.getNumeroTracce()!=null?discoMusicaleInPagina.getNumeroTracce():"" %>" required>
+									value="${discoMusicaleDaAggiornare.numeroTracce}" required>
 								</div>
 								
 								<div class="col-md-3">
-									<label for="dataRilascio" class="form-label">Data di Arrivo<span class="text-danger">*</span></label>
+									 <fmt:formatDate value="${discoMusicaleDaAggiornare.dataRilascio}" pattern="dd/MM/yyyy" var="dataRilascio_2"/>
+									<label for="dataRilascio" class="form-label">Data di Arrivo<span class="text-danger">*</span></label>			                 
 									<input class="form-control"  name="dataRilascio" id="dataRilascio" type="date" placeholder="dd/MM/yy" title="formato : gg/mm/aaaa" 
-										value="<%=discoMusicaleInPagina.getDataRilascio()!=null? new SimpleDateFormat("yyyy-MM-dd").format(discoMusicaleInPagina.getDataRilascio()):""  %>" required/>
+										value="${dataRilascio_2}" required/>
 								</div>
 								
 								

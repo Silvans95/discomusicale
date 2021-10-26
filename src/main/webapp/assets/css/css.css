@@ -1,12 +1,21 @@
 @charset "ISO-8859-1";
 
-	.btn-outline-success {
+.btn-outline-success {
+	color: #000000;
+	border-color: #822626;
+}
+
+.btn-outline-success:hover {
+	color: #fff;
+	background-color: #822626;
+	border-color: #822626;
+}
+
+.bg-success{
+    background-color: #4f381c !important;
     color: white;
-    border-color: #822626;
+
+}    
+.py-5 {
+	background-color: #e4e8ec;
 }
-    .btn-outline-success:hover {
-    color: #fff;
-    background-color: #822626;
-    border-color: #822626;
-}
-    

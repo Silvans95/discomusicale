@@ -43,35 +43,37 @@
 		
 							<form method="post" action="ExecuteInsertServlet" class="row g-3" novalidate="novalidate">
 							
-								<% DiscoMusicale discoMusicaleInPagina = (DiscoMusicale)request.getAttribute("insert_discoMusicale_attr"); %>
-							
+								
 								<div class="col-md-6">
 									<label for="titolo" class="form-label">Titolo <span class="text-danger">*</span></label>
 									<input type="text" name="titolo" id="titolo" class="form-control" placeholder="Inserire il titolo"  
-										value="<%=discoMusicaleInPagina.getTitolo()!=null?discoMusicaleInPagina.getTitolo():"" %>" required>
+										value="${insert_discoMusicale_attr.titolo}" required>
 								</div>
 								
 								<div class="col-md-6">
 									<label for="autore" class="form-label">Autore <span class="text-danger">*</span></label>
 									<input type="text" name="autore" id="autore" class="form-control" placeholder="Inserire la autore"  
-										value="<%=discoMusicaleInPagina.getAutore()!=null?discoMusicaleInPagina.getAutore():"" %>" required>
+										value="${insert_discoMusicale_attr.autore}" required>
 								</div>
 							
 								<div class="col-md-6">
 									<label for="numeroTracce" class="form-label">NumeroTracce <span class="text-danger">*</span></label>
 									<input type="number" class="form-control" name="numeroTracce" id="numeroTracce" placeholder="Inserire numeroTracce" 
-									value="<%=discoMusicaleInPagina.getNumeroTracce()!=null?discoMusicaleInPagina.getNumeroTracce():"" %>" required>
+									value="${insert_discoMusicale_attr.numeroTracce}" required>
 								</div>
 								
 								<div class="col-md-3">
 									<label for="dataNascita" class="form-label">Data di Arrivo<span class="text-danger">*</span></label>
 									<input class="form-control"  name="dataRilascio" id="dataRilascio" type="date" placeholder="dd/MM/yy" title="formato : gg/mm/aaaa" 
-										value="<%=discoMusicaleInPagina.getDataRilascio()!=null? new SimpleDateFormat("yyyy-MM-dd").format(discoMusicaleInPagina.getDataRilascio()):""  %>" required/>
+										value="${insert_discoMusicale_attr.dataRilascio}" required/>
 								</div>
 								
 								
 							<div class="col-12">
-								<button type="submit" name="submit" value="submit" id="submit" class="btn btn-primary">Conferma</button>
+								<button type="submit" name="submit" value="submit" id="submit" class="btn btn-outline-success">Conferma</button>
+								   <a href="ListServlet" class='btn btn-outline-secondary' style='width:100px'>
+					            <i class='fa fa-chevron-left'></i> Indietro
+					        </a>
 							</div>
 		
 						</form>

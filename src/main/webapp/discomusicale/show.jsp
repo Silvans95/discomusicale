@@ -1,9 +1,12 @@
 <!doctype html>
 <%@page import="it.prova.discomusicale.model.DiscoMusicale"%>
 <%@page import="java.text.SimpleDateFormat"%>
+
+<%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
+<%@ taglib uri = "http://java.sun.com/jsp/jstl/fmt" prefix = "fmt" %>
+
 <html lang="it" class="h-100" >
 	 <head>
-	 
 	 	<!-- Common imports in pages -->
 	 	<jsp:include page="../header.jsp" />
 	   
@@ -23,28 +26,28 @@
 					    <div class='card-header'>
 					        <h5>Visualizza Dettagli</h5>
 					    </div>
-					     <% DiscoMusicale discoMusicaleInPagina = (DiscoMusicale)request.getAttribute("show_discoMusicale_attr"); %>
 					    
 					
 					    <div class='card-body'>
 					    	<dl class="row">
 							  <dt class="col-sm-3 text-right">Titolo</dt>
-							  <dd class="col-sm-9"><%=discoMusicaleInPagina.getTitolo() %></dd>
+							  <dd class="col-sm-9">${show_discoMusicale_attr.titolo}</dd>
 					    	</dl>
 					    	
 					    	<dl class="row">
 							  <dt class="col-sm-3 text-right">Autore:</dt>
-							  <dd class="col-sm-9"><%=discoMusicaleInPagina.getAutore() %></dd>
+							  <dd class="col-sm-9">${show_discoMusicale_attr.autore}</dd>
 					    	</dl>
 					    	
 					    	<dl class="row">
 							  <dt class="col-sm-3 text-right">NumeroTracce:</dt>
-							  <dd class="col-sm-9"><%=discoMusicaleInPagina.getNumeroTracce() %></dd>
+							  <dd class="col-sm-9">${show_discoMusicale_attr.numeroTracce}</dd>
 					    	</dl>
 					    	
 					    	<dl class="row">
 							  <dt class="col-sm-3 text-right">Data di Rilascio:</dt>
-							  <dd class="col-sm-9"><%=discoMusicaleInPagina.getDataRilascio()!=null? new SimpleDateFormat("dd/MM/yyyy").format(discoMusicaleInPagina.getDataRilascio()):"N.D."  %></dd>
+							   <fmt:formatDate value="${show_discoMusicale_attr.dataRilascio}" pattern="dd/MM/yyyy" var="dataRilascio"/>				                 
+							  <dd class="col-sm-9">${dataRilascio}</dd>
 					    	</dl>
 					    	
 					    </div>

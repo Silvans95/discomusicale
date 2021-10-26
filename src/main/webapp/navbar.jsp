@@ -30,7 +30,7 @@
         </ul>
       </div>
       <div class="col-md-3 text-end">
-        <a  class="btn btn-outline-success" href="login.jsp">Login</a>
+        <a  class="btn btn-outline-success" href="login.jsp" style="color:white;">Login</a>
     
 
       </div>

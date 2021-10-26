@@ -2,12 +2,17 @@
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="java.util.List"%>
 <%@page pageEncoding="UTF-8" contentType="text/html; charset=UTF-8"%>
+
+<%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
+<%@ taglib uri = "http://java.sun.com/jsp/jstl/fmt" prefix = "fmt" %>
+
 <!doctype html>
 <html lang="it" class="h-100" >
 	 <head>
 	 
 	 	<!-- Common imports in pages -->
 	 	<jsp:include page="../header.jsp" />
+	   
 	   
 	   <title>Lista Dischi</title>
 	 </head>
@@ -42,7 +47,7 @@
 				        <h5>Lista dei risultati</h5> 
 				    </div>
 				    <div class='card-body'>
-				    	<a class="btn btn-primary " href="PrepareInsertServlet">Aggiungi Nuovo</a>
+				    	<a class="btn btn-outline-success " href="PrepareInsertServlet">Aggiungi Nuovo</a>
 				    
 				        <div class='table-responsive'>
 				            <table class='table table-striped ' >
@@ -57,22 +62,24 @@
 				                    </tr>
 				                </thead>
 				                <tbody>
-				                	<% List<DiscoMusicale> listaArticoli = (List<DiscoMusicale>)request.getAttribute("listAttribute");
-				                		for(DiscoMusicale item:listaArticoli){ %>
+				                		 <c:forEach var="tempDiscoMusicale" items="${listAttribute}">
+				                		 <fmt:formatDate value="${tempDiscoMusicale.dataRilascio}" pattern="dd/MM/yyyy" var="dataRilascio"/>
 				                    <tr >
-				                        <td><%=item.getId() %></td>
-				                        <td><%=item.getTitolo() %></td>
-				                        <td><%=item.getAutore() %></td>
-				                        <td><%=item.getNumeroTracce() %></td>
-				                        <td><%=item.getDataRilascio()!=null? new SimpleDateFormat("dd/MM/yyyy").format(item.getDataRilascio()):"N.D."%></td>
-				                        <td>
-											<a class="btn  btn-sm btn-outline-secondary" href="ExecuteDetailsServlet?idDiscoMusicale=<%=item.getId() %>">Dettagli</a>
-											<a class="btn  btn-sm btn-outline-primary ml-2 mr-2" href="PrepareUpdateServlet?discoMusicaleDaAggiornare=<%=item.getId() %>">Modifica</a>
-											<a class="btn btn-outline-danger btn-sm" href="PrepareRemoveServlet?discoMusicaleDaRimuovere=<%=item.getId() %>">Rimuovi</a>
-										</td>
-				                    </tr>
-				                    <% } %>
+				                        <td>${tempDiscoMusicale.id}</td>
+				                        <td>${tempDiscoMusicale.titolo}</td>
+				                        <td>${tempDiscoMusicale.autore}</td>
+				                        <td>${tempDiscoMusicale.numeroTracce}</td>
+				                        <td>${dataRilascio}</td>
 				                    
+				                    
+				                        <td>
+											<a class="btn  btn-sm btn-outline-secondary" href="ExecuteDetailsServlet?idDiscoMusicale=${tempDiscoMusicale.id}">Dettagli</a>
+											<a class="btn  btn-sm btn-outline-primary ml-2 mr-2" href="PrepareUpdateServlet?discoMusicaleDaAggiornare=${tempDiscoMusicale.id}">Modifica</a>
+											<a class="btn btn-outline-danger btn-sm" href="PrepareRemoveServlet?discoMusicaleDaRimuovere=${tempDiscoMusicale.id}">Rimuovi</a>
+										</td>
+										
+				                    </tr>                 				   
+				                    </c:forEach>	
 				                </tbody>
 				            </table>
 				        </div>
